@@ -1,4 +1,4 @@
-<template>
+<template>
     <div>
         <div v-if="editMode" style="margin-top:-20px;">
             <v-radio-group 

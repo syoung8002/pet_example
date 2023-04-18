@@ -1,4 +1,4 @@
-<template>
+<template>
     <div>
         <v-data-table
                 :headers="headers"
@@ -68,7 +68,6 @@
                 [
                     { text: "id", value: "id" },
                     { text: "petId", value: "petId" },
-                    { text: "price", value: "price" },
                 ],
             item : [],
             newValue: {},
@@ -87,7 +86,6 @@
 
             this.newValue = {
                 'petId': {},
-                'price': {},
             }
         },
         methods: {
@@ -108,4 +106,5 @@
         }
     }
 </script>
+
 

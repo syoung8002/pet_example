@@ -1,6 +1,9 @@
-<template>
+<template>
     <div>
-        <v-list two-line v-if="list.length > 0">
+        <v-card-title v-if="!editMode">
+            Item : 
+        </v-card-title>
+        <v-list two-line v-else-if="editMode && list.length > 0">
             <v-list-item-group 
                     v-model="selected" 
                     color="indigo"
@@ -16,9 +19,6 @@
                             </v-list-item-title>
                             <v-list-item-subtitle>
                                 PetId :  {{item.petId }}
-                            </v-list-item-subtitle>
-                            <v-list-item-subtitle>
-                                Price :  {{item.price }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 
@@ -40,10 +40,12 @@
         name: 'ItemPicker',
         props: {
             value: [String, Object, Array, Number, Boolean],
+            editMode: Boolean,
         },
         data: () => ({
             list: [],
             selected: null,
+            referenceValue: null,
         }),
         async created() {
             var me = this;
@@ -57,11 +59,9 @@
                 var tmpValue = await axios.get(axios.fixUrl('/items/' + id))
                 if(tmpValue.data) {
                     var val = tmpValue.data
-                    me.list.forEach(function(item, idx) {
-                        if(item.name == val.name) {
-                            me.selected = idx
-                        }
-                    })
+                    
+                    
+                    me.referenceValue = val
                 }
             }
         },
@@ -72,14 +72,11 @@
                     var arr = this.list[val]._links.self.href.split('/');
                     obj['id'] = arr[4]; 
                     
-                    
-                    
-                    
-                    
                     this.$emit('selected', obj);
                 }
             },
         },
     };
 </script>
+
 

@@ -1,4 +1,4 @@
-<template>
+<template>
     <div style="margin: 0 -15px 0 -15px;">
         <v-card-title v-if="editMode">
             {{label}}

@@ -79,3 +79,4 @@ public class AbstractEvent {
         return getEventType().equals(getClass().getSimpleName());
     }
 }
+//>>> Clean Arch / Outbound Adaptor

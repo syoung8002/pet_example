@@ -1,4 +1,4 @@
-<template>
+<template>
     <v-card outlined>
         <v-card-title>
             Pet # {{item._links.self.href.split("/")[item._links.self.href.split("/").length - 1]}}
@@ -103,3 +103,4 @@
         },
     };
 </script>
+

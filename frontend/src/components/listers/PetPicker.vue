@@ -1,6 +1,9 @@
-<template>
+<template>
     <div>
-        <v-list two-line v-if="list.length > 0">
+        <v-card-title v-if="!editMode">
+            Pet :  {{ referenceValue.name }} 
+        </v-card-title>
+        <v-list two-line v-else-if="editMode && list.length > 0">
             <v-list-item-group 
                     v-model="selected" 
                     color="indigo"
@@ -44,10 +47,12 @@
         name: 'PetPicker',
         props: {
             value: [String, Object, Array, Number, Boolean],
+            editMode: Boolean,
         },
         data: () => ({
             list: [],
             selected: null,
+            referenceValue: null,
         }),
         async created() {
             var me = this;
@@ -61,11 +66,11 @@
                 var tmpValue = await axios.get(axios.fixUrl('/pets/' + id))
                 if(tmpValue.data) {
                     var val = tmpValue.data
-                    me.list.forEach(function(item, idx) {
-                        if(item.name == val.name) {
-                            me.selected = idx
-                        }
-                    })
+                    
+                    me.selected = me.list.findIndex((item) => item.name == val.name)
+                    
+                    
+                    me.referenceValue = val
                 }
             }
         },
@@ -77,10 +82,6 @@
                     obj['id'] = arr[4]; 
                     
                     
-                    obj['nameField'] = this.list[val].name; 
-                    
-                    
-                    
                     
                     this.$emit('selected', obj);
                 }
@@ -88,4 +89,5 @@
         },
     };
 </script>
+
 

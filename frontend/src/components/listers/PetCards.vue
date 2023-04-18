@@ -1,4 +1,4 @@
-<template>
+<template>
     <div>
         <h1 style = "margin-left:4.5%; margin-top:-10px;">Pet</h1>
         <v-col style="margin-bottom:40px;">
@@ -115,4 +115,5 @@
         margin-bottom:50px;
     }
 </style>
+
 

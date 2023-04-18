@@ -1,14 +1,12 @@
-<template>
+<template>
     <v-card outlined @click="openDialog">
-        <v-card-title>
-            Pet : {{ referenceValue ? referenceValue.name : '' }}
-        </v-card-title>
+        <PetPicker v-model="value" @selected="pick" :editMode="editMode" />
 
         <v-dialog v-model="pickerDialog">
             <v-card>
                 <v-card-title>Pet</v-card-title>
                 <v-card-text>
-                    <PetPicker v-model="value" @selected="pick"/>
+                    <PetPicker v-model="value" @selected="pick" :editMode="editMode" />
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -37,7 +35,6 @@
         data: () => ({
             newValue: {},
             pickerDialog: false,
-            referenceValue: null,
         }),
         async created() {
             if(!Object.values(this.value)[0]) {
@@ -48,11 +45,6 @@
             }
             else {
                 this.newValue = this.value;
-                var path = '/pets';
-                var temp = await axios.get(axios.fixUrl(path + '/' +  Object.values(this.value)[0]));
-                if(temp.data) {
-                    this.referenceValue = temp.data
-                }
             }
         },
         watch: {
@@ -100,14 +92,9 @@
             },
             async pick(val){
                 this.newValue = val;
-                var path = '/pets';
-                var temp = await axios.get(axios.fixUrl(path + '/' + val.id));
-                if(temp.data) {
-                    this.referenceValue = temp.data;
-                }
-                this.referenceValue.nameField = val.nameField;
             },
         }
     }
 </script>
+
 

@@ -1,4 +1,4 @@
-<template>
+<template>
     <div>
         <v-data-table
                 :headers="headers"
@@ -110,4 +110,5 @@
         }
     }
 </script>
+
 

@@ -22,9 +22,6 @@ public class Item {
     )
     private PetId petId;
 
-    @Embedded
-    private Price price;
-
     public static ItemRepository repository() {
         ItemRepository itemRepository = ItemApplication.applicationContext.getBean(
             ItemRepository.class

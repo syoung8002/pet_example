@@ -1,4 +1,4 @@
-<template>
+<template>
 
     <v-card style="width:450px;" outlined>
         <template slot="progress">
@@ -18,7 +18,6 @@
 
         <v-card-text>
             <PetId offline label="PetId" v-model="value.petId" :editMode="editMode" @change="change"/>
-            <Price offline label="Price" v-model="value.price" :editMode="editMode" @change="change"/>
         </v-card-text>
 
         <v-card-actions>
@@ -192,4 +191,5 @@
         },
     }
 </script>
+
 

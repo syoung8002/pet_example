@@ -1,4 +1,4 @@
-<template>
+<template>
     <div>
         <v-list two-line>
             <template>
@@ -134,4 +134,5 @@
         margin-bottom:50px;
     }
 </style>
+
 
